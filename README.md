@@ -14,6 +14,12 @@ sudo apt-get install libavahi-compat-libdnssd-dev
 sudo apt-get install npm  
 sudo npm install -g --unsafe-perm homebridge  
 
+
+# edit config.conf file
+view config.conf  
+copy  /home/pi/.homebridge/
+
+
 ## run homebridge
 homebridge
 
