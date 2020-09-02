@@ -16,7 +16,7 @@ sudo npm install -g --unsafe-perm homebridge
 
 
 ## 3.edit config.conf file
-view config.conf  
+view config.json  
 copy  /home/pi/.homebridge/
 
 
