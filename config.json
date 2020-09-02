@@ -1,0 +1,57 @@
+{
+    "bridge":{
+        "name": "Raspberry Pi",
+        "username": "CC:22:3D:E3:CE:30",
+        "port": 51826,
+        "pin": "031-45-154"
+    },
+    "description": "Raspberry Pi 2020",
+    "accessories": [
+        {
+          "accessory": "HTTP-SWITCH",
+          "name": "Switch",
+          
+          "switchType": "stateful",
+          
+          "onUrl": "http://localhost:5000/homebridge/switch/On",
+          "offUrl": "http://localhost:5000/homebridge/switch/Off",
+          
+          "statusUrl": "http://localhost:5000/homebridge/switch/Status"
+        },
+        {
+            "accessory": "HTTP-TEMPERATURE",
+            "name": "Temperature Sensor",
+            "pullInterval":30000,
+            "getUrl": "http://localhost:5000/homebridge/getTemperature"
+        },
+        {
+          "accessory": "HTTP-LIGHTBULB",
+          "name": "Light",
+          "onUrl": "http://localhost:5000/homebridge/light/On",
+          "offUrl": "http://localhost:5000/homebridge/light/Off",
+          "statusUrl": "http://localhost:5000/homebridge/light/Status",
+          "brightness": {
+            "setUrl": "http://localhost:5000/homebridge/light/setBrightness?brightness=%s",
+            "statusUrl": "http://localhost:5000/homebridge/light/getBrightness"
+        }
+      }          
+    ],
+    "platforms":[
+      {
+        "platform": "Camera-ffmpeg",
+        "cameras":[
+          {
+            "name":"Camera",
+            "videoConfig":{              
+              "source": "-s 640x480 -i /dev/video0",              
+              "stillImageSource": "-i http://localhost/camera.jpg",
+              "maxStreams": 2,
+              "maxWidth": 640,
+              "maxHeight": 480,
+              "maxFPS": 30
+            }
+          }
+        ]
+      }
+    ]
+}
